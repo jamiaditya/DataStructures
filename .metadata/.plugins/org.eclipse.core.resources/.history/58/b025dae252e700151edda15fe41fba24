@@ -1,0 +1,13 @@
+package com.SingletonPattern;
+
+public class SingletonClass {
+	
+	private SingletonClass instance;
+	private SingletonClass(){}
+	public SingletonClass getInstance(){
+		if(instance == null){
+			return new SingletonClass();
+		}
+		return instance
+	}
+}
