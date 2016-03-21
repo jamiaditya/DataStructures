@@ -1,0 +1,37 @@
+﻿<p>
+    Search: <input ng-model="search">
+</p>
+
+<table class="table table-bordered">
+    <tr>
+        <td colspan="4" >
+            <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                <i class="icon-shopping-cart" />
+                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | nfcurrency:"&#8377;"}}</b>
+            </a>
+        </td>
+    </tr>
+    <tr ng-repeat="product in shop.products | orderBy:'name' | filter:search" >
+        <td class="tdCenter" style="width:15%;"><img ng-src="img/products/{{product.id}}.jpeg" alt="{{product.name}}" /></td>
+        <td>
+            <a href="#/products/{{product.id}}"><b>{{product.name}}</b></a><br />
+            {{product.description}}
+        </td>
+        <td class="tdRight" style="width:10%;">
+            {{product.price | nfcurrency:"&#8377;"}}
+        </td>
+        <td class="tdCenter" style="width:15%;">
+            <a href="" ng-click="cart.addItem(product.id, product.name, product.price, 1)">
+                Add Item To Cart
+            </a>
+        </td>
+    </tr>
+    <tr class="well">
+        <td class="tdRight" colspan="4">
+            <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                <i class="icon-shopping-cart" />
+                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | nfcurrency:"&#8377;"}}</b>
+            </a>
+        </td>
+    </tr>
+</table>
