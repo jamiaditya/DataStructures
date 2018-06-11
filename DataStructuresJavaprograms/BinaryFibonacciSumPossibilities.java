@@ -9,8 +9,8 @@ public class BinaryFibonacciSumPossibilities {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println(new Date());
-		long sum = 200;/////////////////////////Enter the number here
-		long n = sum>=100?sum/5:sum;
+		long sum = 30000;/////////////////////////Enter the number here
+		long n = sum>=100?sum/10:sum;
 		HashMap<Long, Long> newHash = new HashMap<>();
 		ArrayList<Long> array = new ArrayList<>();
 		for (long i=0; i<=sum; i++) {
@@ -35,7 +35,10 @@ public class BinaryFibonacciSumPossibilities {
 	}
 	
 	public static void getSum(ArrayList<Long> array, long i, long sum, String combination, HashMap<String, String> hash) {
-		for(long index=i;index>=0; index--) {
+//		for(long index=i;index>=0; index--) {
+			//System.out.println(count++);
+			long index = i;
+			if(index<0) return;
 			long valueAtIndex = array.get((int) index);
 			sum = sum - valueAtIndex;
 			if(sum==0) {
@@ -61,8 +64,9 @@ public class BinaryFibonacciSumPossibilities {
 				sum = sum + valueAtIndex;
 				//System.out.println("here");
 				getSum(array, index-1, sum, combination, hash);
+				
 			}
-		}
+//		}
 	}
 	
 	public static long getFibSeriesArray(long n, HashMap<Long, Long> hash, long x) {
