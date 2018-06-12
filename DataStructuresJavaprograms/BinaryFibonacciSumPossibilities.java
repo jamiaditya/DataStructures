@@ -10,13 +10,14 @@ public class BinaryFibonacciSumPossibilities {
 		// TODO Auto-generated method stub
 		System.out.println(new Date());
 		long sum = 30000;/////////////////////////Enter the number here
-		long n = sum>=100?sum/10:sum;
+		long n = 100;
 		HashMap<Long, Long> newHash = new HashMap<>();
 		ArrayList<Long> array = new ArrayList<>();
-		for (long i=0; i<=sum; i++) {
+		for (long i=0; i<=n; i++) {
 			newHash.put(i, null);
 		}
 		getFibSeriesArray(n, newHash, sum);
+		System.out.println(new Date());
 		for (long i=1;i<newHash.keySet().size(); i++) {
 			if(newHash.get(i)!=null && newHash.get(i)>=0)array.add((int) (i-1), newHash.get(i));
 			else {
@@ -24,6 +25,7 @@ public class BinaryFibonacciSumPossibilities {
 			}
 		}
 		System.out.println(array);
+		System.out.println(array.size());
 		HashMap<String, String> combinationHash = new HashMap<>();
 		String combination = "";
 		for(long i=array.size()-1;i>=0;i--) {
@@ -31,6 +33,7 @@ public class BinaryFibonacciSumPossibilities {
 			combination = combination+"0";
 		}
 		System.out.println(combinationHash.keySet());
+		System.out.println(combinationHash.keySet().size());
 		System.out.println(new Date());
 	}
 	
