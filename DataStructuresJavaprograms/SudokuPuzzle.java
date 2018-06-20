@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class SudokuPuzzle {
 
@@ -40,6 +41,7 @@ public class SudokuPuzzle {
 	}
 	
 	public boolean solveSudoku(int[][] grid) {
+		count++;
 		int row = 0, col = 0;
 		Sample s = new Sample();
 		if(!findUnAssigned(grid, s))return true;
@@ -57,28 +59,33 @@ public class SudokuPuzzle {
 	public void printSudoku(int[][] grid) {
 		for(int i=0;i<N; i++) {
 			for(int j=0;j<N; j++) {
-				System.out.print(grid[i][j]);
+				System.out.print(grid[i][j]+" ");
 			}
 			System.out.println("");
 		}
 	}
+	public static Integer count=0;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SudokuPuzzle s = new SudokuPuzzle();
-		int[][] grid= {{3, 0, 6, 5, 0, 8, 4, 0, 0},
-                {5, 2, 0, 0, 0, 0, 0, 0, 0},
-                {0, 8, 7, 0, 0, 0, 0, 3, 1},
-                {0, 0, 3, 0, 1, 0, 0, 8, 0},
-                {9, 0, 0, 8, 6, 3, 0, 0, 5},
-                {0, 5, 0, 0, 9, 0, 6, 0, 0},
-                {1, 3, 0, 0, 0, 0, 2, 5, 0},
-                {0, 0, 0, 0, 0, 0, 0, 7, 4},
-                {0, 0, 5, 2, 0, 6, 3, 0, 0}};
+		System.out.println(new Date());
+		int[][] grid= {{0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {9, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0}};
 		if(s.solveSudoku(grid)) {
 			s.printSudoku(grid);
+			System.out.println(new Date());
 		}else {
 			System.out.println("No Solution");
+			System.out.println(new Date());
 		}
+		//System.out.println(count);
 	}
 
 	class Sample{
