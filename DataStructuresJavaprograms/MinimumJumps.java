@@ -19,45 +19,35 @@ You can assume that you can always reach the last index.
 
 */
 class MinimumJumps {
-	public void calculateBestDistance(int[] nums, ArrayList<Integer> distance, int index, int numsLength) {
-		int stepsPossible = nums[index];
-		if(stepsPossible<=0) {
-			distance.add(-1);
-			return;
-		}
-		Integer steps =null;
-		for(int i=1; i<=stepsPossible;i++) {
-			int newIndex = index+i;
-			if(newIndex==nums.length-1) {
-				//System.out.println("here");
-				steps=0;
+	public int jump(int[] nums) {
+		nums[nums.length-1]=0;
+		int numsLength = nums.length-1;
+		for(int index=nums.length-2;index>=0;index--) {
+			int stepsPossible = nums[index];
+			if(stepsPossible==0) {
+				nums[index]=-1;
 				break;
 			}
-			if(newIndex<=nums.length-1 ) {
-				int s = distance.get(numsLength-newIndex);
-                if(s==-1)continue;
-				if(steps==null || s<steps) {
-					steps=s;
+			Integer steps =null;
+			for(int i=1; i<=stepsPossible;i++) {
+				int newIndex = index+i;
+				if(newIndex==numsLength) {
+					steps=0;
+					break;
+				}
+				if(newIndex<=nums.length-1 ) {
+					int s = nums[newIndex];
+			    if(s==-1)continue;
+					if(steps==null || s<steps) {
+						steps=s;
+					}
 				}
 			}
+		    if(steps==null)nums[index]=-1;
+		    else nums[index]=steps+1;
 		}
-        if(steps==null)distance.add(-1);
-        else distance.add(steps+1);
-	}
-    public int jump(int[] nums) {
-    	ArrayList<Integer> distance = new ArrayList<Integer>(nums.length);
-//    	for(int i=0; i<nums.length-1; i++) {
-//    		distance.add(-1);
-//    	}
-    	distance.add(0);
-        int numsLength = nums.length-1;
-    	for(int i=nums.length-2;i>=0;i--) {
-			//distance.add(-1);
-    		calculateBestDistance(nums, distance, i, numsLength);
-    	}
-    	//System.out.println(distance);
-    	return distance.get(nums.length-1);
-    }
+		return nums[0];
+	    }
     public static void main(String[] args) {
     	MinimumJumps j = new MinimumJumps();
     	int[] nums = {2,3,1,1,4};
